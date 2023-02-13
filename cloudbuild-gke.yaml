@@ -7,6 +7,16 @@ steps:
 #push to container registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}']
+#kubectl
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+  - 'set'
+  - 'image'
+  - 'deployment/cicd-app-1'
+  - 'runimage-sha256-1=gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-b'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-1'
 images:
 - gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}
 substitutions:

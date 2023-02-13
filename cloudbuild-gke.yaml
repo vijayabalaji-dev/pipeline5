@@ -1,6 +1,6 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/vijayabalaji-dev/pipeline5.git']
+# - name: 'gcr.io/cloud-builders/git'
+#   args: ['clone', 'https://github.com/vijayabalaji-dev/pipeline5.git']
 # Build the container image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}', '.']

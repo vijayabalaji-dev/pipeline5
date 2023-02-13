@@ -22,4 +22,4 @@ images:
 substitutions:
   _PROJECT_ID: devops-377210
   _CIMAGE: gke-image
-  _VERSION: v1.0
+  _VERSION: v3.0

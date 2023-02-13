@@ -1,0 +1,15 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/vijayabalaji-dev/pipeline5.git']
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}', '.']
+#push to container registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}']
+images:
+- gcr.io/${_PROJECT_ID}/${_CIMAGE}:${_VERSION}
+substitutions:
+  _PROJECT_ID: devops-377210
+  _CIMAGE: gke-image
+  _VERSION: v1.0
